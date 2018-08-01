@@ -1,0 +1,39 @@
+/*每页标题，搜索项*/
+body{
+	padding: 10px;
+}
+.btn{
+	padding: 5px 20px;
+}
+.searchCondition{
+	overflow:hidden;
+}
+/*需要根据情况设置P的长度*/
+.searchCondition p{
+	display: inline-block;
+	float: left;
+}
+/* .searchCondition p:nth-last-child(1){
+	text-align: right;
+} */
+.searchCondition label{
+	height: 30px;
+	line-height: 30px;
+	width: 60px;
+	text-align: justify;
+}
+.searchCondition label:after {
+	display: inline-block;
+	width: 100%;
+	content: '';
+}
+.searchCondition input[type='text'],
+.searchCondition select{
+	vertical-align: top;
+}
+.searchCondition input[type='text']{
+	width: 100px;
+}
+.searchCondition select{
+	width: 150px;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.IRoleDao">
+	<resultMap type="sysrole" id="sysrole">
+        <result column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+    </resultMap>
+
+	<!-- 开启本mapper的namespace下的二缓存 -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+
+    <!-- 根据用户账号查询用户信息 ForMysql-->
+    <select id="findAll" resultMap="sysrole">
+		select * from sys_role 
+	</select>
+	
+	<select id="findByUserName" resultMap="sysrole">
+		select
+			 *
+		from sys_role sr
+			 LEFT JOIN sys_user_role sur ON sr.role_id= sur.role_id 
+			 LEFT JOIN sys_user su ON su.user_id = sur.user_id
+			 where su.username = #{username}
+	</select>
+	
+</mapper>

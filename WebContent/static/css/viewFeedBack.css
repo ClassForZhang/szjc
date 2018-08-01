@@ -1,0 +1,135 @@
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+.panel-body{
+	border:none;
+}
+.viewFeedBackContainer .datagrid-header td,
+.viewFeedBackContainer .datagrid-body td{
+    border-style: solid;
+    border-color: #fff;
+}
+.viewFeedBackContainer .datagrid-header-inner,.datagrid-row-alt{
+	background-color: #E3E7F1;
+}
+.datagrid-header-inner {
+	width: 100%;
+}
+.datagrid-btable{
+	width: 100%;
+}
+.datagrid-btable tr{
+	height: 45px;
+}
+.datagrid-htable{
+	width: 100%;
+	height: 50px;
+}
+
+.webPosition{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	font-size: 14px;
+	background-color: #F4F4F5;
+	padding-left: 10px;
+	border-top:black 1px solid; 
+	box-sizing: border-box;
+}
+
+.viewFeedBackContainer{
+	background-color: #999;
+	overflow: hidden;
+	border:black 1px solid;
+	box-sizing: border-box;
+}
+div.view-left{
+	width: 300px;
+	height: 637px;
+	float: left;
+	background-color: #666;
+}
+div.view-right{
+	margin-left: 300px;
+	background-color: white;
+	max-height: 637px;
+	overflow-y: scroll;
+	padding: 10px 30px;
+}
+.view-left>p{
+	height: 55px;
+	line-height: 55px;
+	background-color: #E3E7F1;
+	padding-left: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: black 1px solid;
+	box-sizing: border-box;
+}
+.view-left>.submitView{
+	background-color: #4E5C66;
+	color: white;
+	padding-left: 21px;
+}
+.view-left>p>img{
+	vertical-align: middle;
+	margin-right: 30px;
+}
+
+ul.view-type{
+	width: 100%;
+	height: 100%;
+	background-color: #EFF1F6;
+}
+.view-type li{
+	font-size: 14px;
+	list-style: none;
+	line-height: 40px;
+	height: 40px;
+	padding-left: 40px;
+	border-bottom: black 1px solid;
+}
+.view-type li a{
+	color: black;
+}
+
+.viewSearch{
+	width: 100%;
+	overflow: hidden;
+	border: black 1px solid;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	padding: 10px 0;
+}
+
+.viewSearch>form>p{
+	display: inline-block;
+	height: 40px;
+	vertical-align: middle;
+	margin:0 20px;
+}
+
+.viewSearch label{
+	font-size: 14px;
+	margin-left:30px;
+}
+.viewSearch input,.viewSearch select{
+	height: 30px;
+	padding: 0;
+}
+.viewSearch input[type='button']{
+	width: 100px;
+	height: 32px;
+	vertical-align: middle;
+	margin-left: 50px;
+}
+.loadNextPage button{
+	display: block;
+	width: 440px;
+	height: 40px;
+	margin: 0 auto;
+}

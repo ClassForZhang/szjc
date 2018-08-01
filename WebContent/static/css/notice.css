@@ -1,0 +1,149 @@
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+
+.panel-body{
+	border:none;
+}
+.datebox{
+	height: 30px;
+	border-radius: 0;
+}
+.datebox .combo-arrow{
+
+}
+.textbox-addon{
+	height: 30px;
+	/*top:-3px !important;*/
+}
+.textbox-text{
+	height: 30px !important;
+	vertical-align: middle;
+}
+.noticeContainer .datagrid-header td,
+.noticeContainer .datagrid-body td{
+    border-style: solid;
+    border-color: #fff;
+}
+.noticeContainer .datagrid-header-inner,.datagrid-row-alt{
+	background-color: #E3E7F1;
+}
+.datagrid-header-inner {
+	width: 100%;
+}
+.datagrid-btable{
+	width: 100%;
+}
+.datagrid-btable tr{
+	height: 45px;
+}
+.datagrid-htable{
+	width: 100%;
+	height: 50px;
+}
+
+.webPosition{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	font-size: 14px;
+	background-color: #F4F4F5;
+	padding-left: 10px;
+	border-top:black 1px solid; 
+	box-sizing: border-box;
+}
+
+.noticeContainer,.newsFlashContainer{
+	background-color: #999;
+	overflow: hidden;
+	border:black 1px solid;
+	box-sizing: border-box;
+}
+.notice-left,.newsFlash-left{
+	width: 300px;
+	height: 632px;
+	float: left;
+	background-color: #666;
+}
+.notice-right,.newsFlash-right{
+	margin-left: 300px;
+	background-color: white;
+	max-height: 632px;
+	overflow-y: scroll;
+	padding: 10px 30px;
+}
+.notice-left>p,.newsFlash-left>p{
+	height: 55px;
+	line-height: 55px;
+	background-color: #E3E7F1;
+	padding-left: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: black 1px solid;
+	box-sizing: border-box;
+}
+.notice-left>p>img,.newsFlash-left>p>img{
+	vertical-align: middle;
+	margin-right: 30px;
+}
+ul.notice-type,ul.newsFlash-type{
+	width: 100%;
+	height: 100%;
+	background-color: #EFF1F6;
+}
+.notice-type li,.newsFlash-type li{
+	font-size: 14px;
+	list-style: none;
+	line-height: 40px;
+	height: 40px;
+	padding-left: 40px;
+	border-bottom: black 1px solid;
+}
+.notice-type li a,.newsFlash-type li a{
+	color: black;
+}
+
+.noticeSearch,.newsFlashSearch{
+	width: 100%;
+	overflow: hidden;
+	border: black 1px solid;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	padding: 10px 0;
+}
+
+.noticeSearch>form>p,.newsFlashSearch>form>p{
+	float: left;
+	font-size: 14px;
+	height: 67px;
+	line-height: 67px;
+}
+.noticeSearch>form>p:nth-child(1),.newsFlashSearch>form>p:nth-child(1){
+	margin:0 20px;
+}
+.noticeSearch label,.newsFlashSearch label{
+	font-size: 14px;
+
+}
+.noticeSearch form input,.newsFlashSearch form input{
+	height: 30px;
+	border:rgb(153, 153, 153) 1px solid;
+	box-sizing:border-box;
+}
+
+.noticeSearch input[type='button'],.newsFlashSearch input[type='button']{
+	width: 100px;
+	height: 32px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+.loadNextPage button{
+	display: block;
+	width: 440px;
+	height: 40px;
+	margin: 0 auto;
+}
