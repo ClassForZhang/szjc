@@ -23,15 +23,15 @@
 	<mvc:default-servlet-handler />
 	
 	<!--拦截器 -->
-	<mvc:interceptors>
+	 <mvc:interceptors>
 		<mvc:interceptor>
-			<!-- 用户认证拦截 -->
+			<!--用户认证拦截-->
 			<mvc:mapping path="/**" />
 			<bean class="com.cn.test.controller.interceptor.LoginInterceptor">
 			</bean>
 		</mvc:interceptor>
 		
-	</mvc:interceptors> 
+	</mvc:interceptors>  
 	
 	<!-- 静态资源访问 -->
 	 <!--  <mvc:resources location="/static/images/" mapping="/image/**"/>-->

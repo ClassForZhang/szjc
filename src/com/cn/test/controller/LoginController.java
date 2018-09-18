@@ -23,7 +23,7 @@ import com.cn.test.utils.MD5Util;
 
 @Controller
 public class LoginController {
-	@RequestMapping("login.action")
+	@RequestMapping("/login.action")
 	public String login(HttpServletRequest request, HttpServletResponse response, UserEntity user,@Param("randomcode")String randomcode) {
 		// 首先进行验证码验证
 		Session session = SecurityUtils.getSubject().getSession();
@@ -42,6 +42,7 @@ public class LoginController {
 		// 用户输入的账号和密码,,存到UsernamePasswordToken对象中..然后由shiro内部认证对比,
 		// 认证执行者交由ShiroDbRealm中doGetAuthenticationInfo处理
 		// 当以上认证成功后会向下执行,认证失败会抛出异常
+		String a = MD5Util.encodeByMD5(user.getPassword());
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), MD5Util.encodeByMD5(user.getPassword()));
 		try {
 			sub.login(token);
@@ -71,7 +72,8 @@ public class LoginController {
 	@RequestMapping("/logout.action")
 	public String logout(HttpSession session)throws Exception{
 		//session失效
-		session.invalidate();
-		return "login";
+		Subject currentUser = SecurityUtils.getSubject();       
+    	currentUser.logout();
+    	return "/login";
 	}
 }

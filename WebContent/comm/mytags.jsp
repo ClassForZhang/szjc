@@ -4,4 +4,4 @@
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <%-- <c:set var="itsm" value="http://22.64.25.62:9080" /> --%>
-<c:set var="itsm" value="http://127.0.0.1:8082" />
+<c:set var="itsm" value="http://127.0.0.1:8080" />

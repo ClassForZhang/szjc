@@ -8,40 +8,23 @@
 <meta charset="utf-8" />
 <title>登录</title>
 <meta name="description" content="User login page" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="author" content="Vincent Garreau" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" media="screen" href="${ctx}/static/css/style.css">
 <link rel="Shortcut Icon" href="favicon.ico">
 <link rel="Bookmark" href="favicon.ico" >
 <title></title>
 </head>
 <script type="text/javascript" src="${ctx}/static/js/jquery.min.js"></script>
-<link rel="stylesheet" href="${ctx }/static/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${ctx}/static/css/bootstrap.min.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${ctx }/static/css/ace-fonts.css" />
-<link rel="stylesheet" href="${ctx }/static/css/ace.css" />
-<link rel="stylesheet" href="${ctx }/static/css/main.css" />
-<body>
-	<%-- <form action='${ctx}/login.action' method='POST'>
-		<table>
-			<tr>
-				<td>用户名:</td>
-				<td><input type='text' name='userName'></td>
-			</tr>
-			<tr>
-				<td>密码:</td>
-				<td><input type='password' name='password' /></td>
-			</tr>
-			<tr>
-				<td>验证码:</td>
-				<td><input  name='randomcode'  placeholder="请输入验证码" /></td>
-				<td><img id="checkNumImage" src="image.jsp" onclick="changeCheckNum()"></td>
-			</tr>
-			<tr>
-				<td>${LOGIN_ERROR_MESSAGE }</td>
-				<td colspan='2'><input type="submit" value="登陆" /></td>
-			</tr>
-		</table>
-	</form> --%>
+<link rel="stylesheet" href="${ctx}/static/css/ace-fonts.css" />
+<link rel="stylesheet" href="${ctx}/static/css/ace.css" />
+<link rel="stylesheet" href="${ctx}/static/css/main.css" />
+
+<body onkeydown="keyLogin()">
 	<div id="particles-js"></div>
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
@@ -50,18 +33,18 @@
 						<img src="${ctx }/static/images/login-logo.png">
 					</div>
 					<div class="space"></div>
-					<form id="loginForm" action="login.action" method='post'>
+					<form id="loginForm" name="form1" action="login.action" method='post'>
 						<fieldset>
 							<label class="block clearfix">
 								<span class="block input-icon input-icon-right">
-									<input type="text" id="loginName" name="userName" class="form-control" placeholder="Username" />
+									<input type="text" id="loginName" name="userName" onkeydown="KeyDown()" class="form-control" placeholder="Username" />
 									<i class="ace-icon fa fa-user"></i>
 								</span>
 							</label>
 							<div class="space-6"></div>
 							<label class="block clearfix">
 								<span class="block input-icon input-icon-right">
-									<input type="password" id="pwd" name="password" class="form-control Pasd"  placeholder="Password" />
+									<input type="password" id="pwd" name="password"  onkeydown="KeyDown()" class="form-control Pasd"  placeholder="Password" />
 									<i class="ace-icon fa fa-lock"></i>
 								</span>
 							</label>
@@ -72,9 +55,8 @@
 								<label class="inline message">
 									<h5 class="red2 lighter" id="testHtml">${LOGIN_ERROR_MESSAGE }</h5>
 								</label>
-								<button id="username"  onclick="login()" type="button" class="width-100 btn btn-sm btn-info">
+								<button id="username"  onclick="login()" name="btnsubmit" class="width-100 btn btn-sm btn-info">
 									<i class="ace-icon fa fa-key"></i>
-									<%--<button onclick="mm()">测试</button>--%>
 									<script type="text/javascript">
 										function login() {
 											$("#loginForm").submit();
@@ -91,12 +73,21 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		
-
-	</script>
 </body>
+<script src="${ctx}/static/js/particles.min.js"></script>
+<script src="${ctx}/static/js/app2.js"></script>
 <script type="text/javascript">
+	/* function KeyDown(){
+	  if (event.keyCode == 13){
+	    event.returnValue=false;
+	    event.cancel = true;
+	    form1.btnsubmit.click();
+	  }
+	} */
+	function keyLogin(){
+		 if (event.keyCode==13)  //回车键的键值为13
+		   document.getElementById("username").click(); //调用登录按钮的登录事件
+	}
 	function changeCheckNum(){
 	    var checkNumImage_=document.getElementById("checkNumImage");
 	    checkNumImage_.src="/szjc/image.jsp?timeStamp="+new Date().getTime();

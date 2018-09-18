@@ -18,6 +18,7 @@
         <property name="locations">
             <list>  
                <value>classpath*:props/jdbc.properties</value>
+               <value>classpath*:props/shiro.properties</value>
             </list>  
         </property>  
     </bean>  
@@ -28,17 +29,44 @@
 	    p:username="root"
 	    p:password="secret@chinawiserv">
 	</bean> -->
+	
 	<!-- MySql数据库 -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource_szjc" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="${driver}" />  
         <property name="url" value="${url}" /> 
         <property name="username" value="${username}" />  
         <property name="password" value="${password}" /> 
 	</bean>
+	
+	<!-- oracle数据库 -->
+	<bean id="dataSource_itsm" class="org.springframework.jdbc.datasource.DriverManagerDataSource">   
+      <!-- 数据库驱动 -->
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <!-- 连接URL串 -->
+        <property name="url" value="${jdbc.url}" />
+        <!-- 连接用户名 -->
+        <property name="username" value="${jdbc.username}" />
+        <!-- 连接密码 -->
+        <property name="password" value="${jdbc.password}" />
+        
+    </bean> 
+    
+    <!-- 下面的是切换数据库的自定义类 -->
+	<bean id="multipleDataSource" class="com.cn.test.controller.MultipleDataSource">
+		<property name="defaultTargetDataSource" ref="dataSource_szjc"></property>
+		<property name="targetDataSources">
+	<map>
+		<entry key="dataSource_szjc" value-ref="dataSource_szjc"></entry>
+		<entry key="dataSource_itsm" value-ref="dataSource_itsm"></entry>
+	</map>
+	</property>
+	</bean>
+    
+    
 	<!-- sqlSessionFactory -->
 	<bean id="sxSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <!-- 指定sqlSessionFactory的数据源 -->
-	    <property name="dataSource" ref="dataSource" />
+	    <property name="dataSource" ref="multipleDataSource" />
 	    <!-- mybatis配置文件路径 -->
 	    <property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
 	    <!-- 映射文件路径 -->
@@ -48,6 +76,7 @@
 	        </list>
 	    </property>
 	</bean>
+	
 	<!-- spring和mybatis整合 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	    <property name="basePackage" value="com.cn.test.dao"></property>
@@ -55,38 +84,15 @@
 	    <property name="sqlSessionFactoryBeanName" value="sxSqlSessionFactory"/> 
 	</bean>
 	
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<property name="securityManager" ref="securityManager"/>
-		<!-- loginUrl认证提交地址 -->
-		<property name="loginUrl" value="/login.jsp"/>
-		<property name="successUrl" value="/index.jsp"/>
-		<!-- 通过unauthorizedUrl指定没有权限时的跳转页面 -->
-		<property name="unauthorizedUrl" value="/refuse.action"/>
-		<!-- 过滤器链定义，从上向下，一般/**放最下面 -->
-		<property name="filterChainDefinitions">
-			<value>
-			 		/login.action = anon
-			 		/index.action = anon
-                    /refuse.action = anon
-                    /js/** = anon
-                    /css/** = anon
-                    /images/** = anon
-                    /addSubtractProcess/addSubtractProcess.action = roles["超级用户角色"]
-					/** = authc
-			</value>
-		</property>
-	</bean>
+	<!-- shiro配置 -->
+    <import resource="applicationContext-shiro.xml"/>
 	
-	<!-- securityManager安全管理器 -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="userRealm" />
-	</bean>
-	
-	<!-- realm -->
-	<bean id="userRealm" class="com.cn.test.controller.UserRealm"/>
 	
 	<!-- 事务管理器 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="multipleDataSource" />
+	</bean>
+	
 	<!-- 事务配置 -->
 	<tx:advice transaction-manager="transactionManager" id="txAdivce">
 	    <tx:attributes>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/comm/mytags.jsp" %>
+<%-- <%@ page session="false" %> --%>
 <!DOCTYPE html>    
 <html>
 <head>
@@ -21,10 +22,15 @@
 		LOGO
 		<p>
 			<a href="javascript:void(0)" title="" class="home">稽查管理</a>
-			<a href="javascript:void(0)" title="" class="ITSM">检测故障</a>
+			<a href="http://127.0.0.1:8080/itsm" title="" class="ITSM" onclick="go()">检测故障</a>
+			<!-- <script type="text/javascript">
+				function go(){
+					window.open("http://127.0.0.1:8080/itsm");
+				}
+			</script> -->
 		</p>
 		<p class="loginInfo">
-			<a href="javascript:void(0)" id="login_btn"></a> | <a href="javascript:void(0)" onclick="loginout()">注销</a>
+			<a href="javascript:void(0)" id="login_btn"></a> | <a href="javascript:void(0)" onclick="loginout()" >注销</a>
 		</p>
 </header><!-- /header -->
 	<div id="main-content">
@@ -182,6 +188,6 @@
 	})
 	function loginout(){
 		window.location.href='logout.action';
-	}
+	} 
 </script>
 </html>

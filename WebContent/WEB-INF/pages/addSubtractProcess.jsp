@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/comm/mytags.jsp" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  
 <!DOCTYPE html>    
 <html>
 <head>
@@ -43,13 +44,18 @@
 	</style>
 </head>
 <body>
-<div class="main">
+	 <shiro:hasRole name="普通用户">
+		<h2>您暂时没有权限访问此页</h2>
+	</shiro:hasRole>
+	<shiro:hasRole name="超级用户角色">
+	<div class="main">
 		<p class="one"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效考核类">绩效考核类</p>
 		<p class="two"><img src="${ctx}/static/images/u124.png" alt="管理监控人员考核类">管理监控人员考核类</p>
 		<p class="three"><img src="${ctx}/static/images/Service_pro_1.png" alt="文明服务考核类">文明服务考核类</p>
 	</div>
 	<div class="childMenu menu1">
-		<a href="${itsm }/itsm/sys/main/main.jsp?uname=${activeUser.loginName}&sysVer=_S"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a>
+		<%-- <a href="${itsm }/itsm/sys/main/main.jsp?uname=${activeUser.loginName}&sysVer=_S"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a> --%>
+		<a href="${itsm }/itsm/sys/main/main.jsp"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="职责考核扣分单流程">职责考核扣分单流程</a>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="一般加分流程">一般加分流程</a>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="批量加(扣)分流程">批量加(扣)分流程</a>
@@ -61,6 +67,7 @@
 	<div class="childMenu menu3">
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="文明服务扣分流程">文明服务扣分流程</a>
 	</div>
+	</shiro:hasRole>
 	<!-- <script type="text/html" id="processTeplate">
 		<ul>
 		{{each rows}}

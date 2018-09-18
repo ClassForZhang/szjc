@@ -1,11 +1,9 @@
 package com.cn.test.controller.interceptor;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.shiro.authc.LogoutAware;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,34 +20,21 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		// 得到请求的url
-		/*String url = request.getRequestURI();
-		// 判断是否是公开 地址
-		// 从配置中取逆名访问url
-		List<String> open_urls = ResourcesUtil.gekeyList("anonymousURL");
-		// 遍历公开 地址，如果是公开 地址则放行
-		for (String open_url : open_urls) {
-			if (url.indexOf(open_url) >= 0) {
-				// 如果是公开 地址则放行
-				return true;
-			}
-		}*/
 		String url = request.getRequestURI();
-		if(url.indexOf("logout.action")<0){
-			if(url.indexOf("login.action") >= 0){
-				return true;
-			}
-			// 判断用户身份在session中是否存在
-			HttpSession session = request.getSession();
-			UserEntity activeUser = (UserEntity) session.getAttribute("activeUser");
-			// 如果用户身份在session中存在放行
-			if (activeUser != null) {
-				return true;
-			}
+		if(url.indexOf("js")>0||url.indexOf("css")>0||url.indexOf("images")>0||url.indexOf("login.action")>0){
+			return true;
+		}
+		
+		// 判断用户身份在session中是否存在
+		HttpSession session= request.getSession();
+		UserEntity activeUser = (UserEntity) session.getAttribute("activeUser");
+		// 如果用户身份在session中存在放行
+		if (activeUser != null) {
+			return true;
 		}
 		// 执行到这里拦截，跳转到登陆页面，用户进行身份认证
 		request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-
+		//response.sendRedirect("http://127.0.0.1:8082/cas/login?service=http://127.0.0.1:8081/szjc/shiro-cas");
 		// 如果返回false表示拦截不继续执行handler，如果返回true表示放行
 		return false;
 	}
