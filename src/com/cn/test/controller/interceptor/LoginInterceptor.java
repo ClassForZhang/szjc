@@ -21,10 +21,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			throws Exception {
 
 		String url = request.getRequestURI();
-		if(url.indexOf("js")>0||url.indexOf("css")>0||url.indexOf("images")>0||url.indexOf("login.action")>0){
+		if(url.indexOf("login.action")>0){
 			return true;
 		}
-		
 		// 判断用户身份在session中是否存在
 		HttpSession session= request.getSession();
 		UserEntity activeUser = (UserEntity) session.getAttribute("activeUser");

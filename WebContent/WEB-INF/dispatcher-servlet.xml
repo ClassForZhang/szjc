@@ -34,9 +34,9 @@
 	</mvc:interceptors>  
 	
 	<!-- 静态资源访问 -->
-	 <!--  <mvc:resources location="/static/images/" mapping="/image/**"/>-->
-	<!--  <mvc:resources location="/assets/css/" mapping="/css/**"/>
-	<mvc:resources location="/assets/js/" mapping="/js/**"/> -->
+	  <!-- <mvc:resources location="/static/images/" mapping="/image/**"/>
+	  <mvc:resources location="/assets/css/" mapping="/css/**"/>
+	 <mvc:resources location="/assets/js/" mapping="/js/**"/>  -->
 	
 	<!-- 设置上传文件最大值   1M=1*1024*1024(B)=1048576 bytes -->    
 	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    

@@ -54,8 +54,9 @@
 		<p class="three"><img src="${ctx}/static/images/Service_pro_1.png" alt="文明服务考核类">文明服务考核类</p>
 	</div>
 	<div class="childMenu menu1">
-		<%-- <a href="${itsm }/itsm/sys/main/main.jsp?uname=${activeUser.loginName}&sysVer=_S"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a> --%>
-		<a href="${itsm }/itsm/sys/main/main.jsp"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a>
+		 <a href="${itsm }/itsm/sys/main/main.jsp?uname=${activeUser.loginName}&sysVer=_S"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a>  
+		<%-- <a href="${itsm }/itsm/sys/main/main.jsp"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a> --%>
+		<%-- <a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="职责考核扣分单流程">职责考核扣分单流程</a> --%>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="职责考核扣分单流程">职责考核扣分单流程</a>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="一般加分流程">一般加分流程</a>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="批量加(扣)分流程">批量加(扣)分流程</a>
