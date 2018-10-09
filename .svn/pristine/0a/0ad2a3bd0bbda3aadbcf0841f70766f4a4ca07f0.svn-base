@@ -1,0 +1,138 @@
+body,div,p,ul,ol,li{
+	margin:0;padding: 0;
+}
+a,a:hover,a:focus{
+	text-decoration: none;
+}
+
+input[type="text"],
+input[type="password"],
+select{
+	height: 30px;
+	line-height: 30px;
+}
+.btn{
+	padding:5px 35px;
+}
+.table>thead:first-child>tr:first-child>th{
+	border:grey 1px solid;
+}
+.table>thead>tr>th,
+.table>tbody>tr>td{
+	border:grey 1px solid;
+}
+
+header{
+	height: 45px;
+	line-height: 45px;
+	background: #2681c7;
+}
+header p{
+	display: inline-block;
+}
+header p a{
+	color:white;
+	font-size: 16px;
+}
+
+.main-left{
+	width: 250px;
+	height: 100%;
+	/*overflow-y:scroll;*/
+	float: left;
+
+}
+.main-right{
+	margin-left: 250px;
+	height: 100%;
+	/*overflow: hidden;*/
+	/*background-color: #174f99;*/
+}
+.main-left .firstLayer{
+	height: 100%;
+	overflow-y:scroll;
+	/*background-color: #0a1d33;*/
+	background: #f2f2f2;
+}
+.main-left .secondLayer,
+.main-left .thirdLayer{
+	height: 100%;
+	background: white;
+}
+.thirdLayer li a{
+	padding-left: 40px;
+}
+.main-left li{
+	width: 100%;
+	/*height: 40px;*/
+	overflow:hidden;
+	line-height: 40px;
+	
+}
+.main-left .secondLayer,
+.main-left .thirdLayer{
+	display: none;
+}
+
+/* .main-left li>.secondLayer>li:after{
+	content: '';
+	overflow: hidden;
+	height: 100px;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    left: 18px;
+    top: 45px;
+    bottom: 0;
+    border-left: 1px dotted #9dbdd6;
+} */
+.main-left ul>li>a:hover,.main-left ul>li>a:active{
+    background: white;
+    color:#266cad;
+}
+
+.main-left>ul>li a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	color: black;
+	border-bottom: #081626 1px solid;
+}
+
+
+
+/*IE下的滚动条*/
+*{
+    scrollbar-face-color:#3174CC; /*面子*//*#82AEE8;*/
+    scrollbar-arrow-color:#82AEE8; /*箭头*/
+   	scrollbar-3dlight-color:#3174CC; /*最外左*//*black*/
+    scrollbar-highlight-color:#3174CC; /*左二*//*#6D6D6D*/
+    scrollbar-shadow-color:#3174CC; /*右二*//*#194076*/
+  	scrollbar-darkshadow-color:#3174CC; /*右一*//*#252625*/
+   	scrollbar-track-color:#194076; /*滑道*/
+}
+
+::-webkit-scrollbar{display: none}
+body{
+    scrollbar-3dlight-color:#F2F2F2; /*- 最外左 -*/
+    scrollbar-highlight-color:#F2F2F2; /*- 左二 -*/
+    scrollbar-face-color:#ECF1F4; /*- 面子 -*/
+    scrollbar-arrow-color:#F2F2F2; /*- 箭头 -*/
+    scrollbar-shadow-color:#F2F2F2; /*- 右二 -*/
+    scrollbar-darkshadow-color:#F2F2F2; /*- 右一 -*/
+    scrollbar-base-color:#F2F2F2; /*- 基色 -*/
+    scrollbar-track-color:#F2F2F2;/*- 滑道 -*/
+}
+.ace-scroll{overflow: hidden;}
+.scroll-track { position: absolute; top: 40px; bottom: auto; height: auto; background-color: #E7E7E7; z-index: 9999; width: 6px; opacity: 0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  }/*兼容ie8*/
+/*.scroll-track.scroll-active{-webkit-transition: width 0.25s ease 0.75s, opacity 0.25s ease 0.75s; -o-transition: width 0.25s ease 0.75s, opacity 0.25s ease 0.75s;  transition: width 0.25s ease 0.75s, opacity 0.25s ease 0.75s; }*/
+.scroll-bar { position: absolute; top: 0; left: 0; width: inherit; background-color: #ACE;background: #bbd4e5; }
+.sidebar.menu-large .scroll-track{ right: 0;}
+.menu-min .scroll-track{ left: 205px;}
+
+.scroll-content { position: static; overflow: hidden;}
+.ace-scroll:hover .scroll-active,
+.scroll-active.scroll-track:hover,
+.scroll-active.scroll-track.scroll-hover,
+.scroll-active.scroll-track.active,
+.scroll-active.scroll-track:active { width: 6px; opacity: 1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";  }/*/兼容ie8/ */

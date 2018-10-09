@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.StationErrorDao">
+	<resultMap type="stationerror" id="stationerror">
+        <result column="id" property="id"/>
+        <result column="station_name" property="stationName"/>
+        <result column="error_times" property="errorTimes"/>
+        <result column="other_error_times" property="otherErrorTimes"/>
+        <result column="date" property="date"/>
+    </resultMap>
+
+	<select id="getStationErrorList" resultMap="stationerror">
+		select * from station_error where date=#{value}
+	</select>
+	
+</mapper>

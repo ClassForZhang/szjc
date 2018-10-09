@@ -1,0 +1,13 @@
+#localhost
+shiro.loginUrl=http://127.0.0.1:8082/cas/login?service=http://127.0.0.1:8081/szjc/shiro-cas
+
+shiro.logoutUrl=http://127.0.0.1:8082/cas/logout?service=http://127.0.0.1:8081/szjc/shiro-cas
+
+shiro.cas.serverUrlPrefix=http://127.0.0.1:8082/cas
+
+shiro.cas.service=http://127.0.0.1:8081/szjc/shiro-cas
+
+shiro.failureUrl=/loginSuccess
+
+shiro.successUrl=/loginSuccess
+

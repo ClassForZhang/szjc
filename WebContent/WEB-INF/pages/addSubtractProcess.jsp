@@ -50,23 +50,23 @@
 	<shiro:hasRole name="超级用户角色">
 	<div class="main">
 		<p class="one"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效考核类">绩效考核类</p>
-		<p class="two"><img src="${ctx}/static/images/u124.png" alt="管理监控人员考核类">管理监控人员考核类</p>
+		<%-- <p class="two"><img src="${ctx}/static/images/u124.png" alt="管理监控人员考核类">管理监控人员考核类</p> --%>
 		<p class="three"><img src="${ctx}/static/images/Service_pro_1.png" alt="文明服务考核类">文明服务考核类</p>
 	</div>
 	<div class="childMenu menu1">
-		 <a href="${itsm }/itsm/sys/main/main.jsp?uname=${activeUser.loginName}&sysVer=_S"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a>  
-		<%-- <a href="${itsm }/itsm/sys/main/main.jsp"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a> --%>
+		<a href="${itsm}/bpm/showAddWorkOrderBPMExecAction.action?uname=${activeUser.loginName}&sysVer=_S&processID=9&regionId=5&productID=11&workBenchID=createWorkorder_11"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a> 
+		<%-- <a href="${itsm }/sys/main/main.jsp?uname=${activeUser.loginName}&sysVer=_S"><img src="${ctx}/static/images/Service_pro_13.png" alt="绩效扣分单流程">绩效扣分单流程</a> --%>
 		<%-- <a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="职责考核扣分单流程">职责考核扣分单流程</a> --%>
-		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="职责考核扣分单流程">职责考核扣分单流程</a>
-		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="一般加分流程">一般加分流程</a>
-		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="批量加(扣)分流程">批量加(扣)分流程</a>
+		<a href="${itsm}/bpm/showAddWorkOrderBPMExecAction.action?uname=${activeUser.loginName}&sysVer=_S&processID=10&regionId=5&productID=12&workBenchID=createWorkorder_12" ><img src="${ctx}/static/images/Service_pro_13.png" alt="大班长职责考核扣分流程">大班长职责考核扣分流程</a>
+		<a href="${itsm}/bpm/showAddWorkOrderBPMExecAction.action?uname=${activeUser.loginName}&sysVer=_S&processID=11&regionId=5&productID=13&workBenchID=createWorkorder_13"><img src="${ctx}/static/images/Service_pro_13.png" alt="站点班长收费员职责扣分流程">站点班长收费员职责扣分流程</a>
+		<a href="${itsm}/bpm/showAddWorkOrderBPMExecAction.action?uname=${activeUser.loginName}&sysVer=_S&processID=12&regionId=5&productID=14&workBenchID=createWorkorder_14"><img src="${ctx}/static/images/Service_pro_13.png" alt="一般加分流程">一般加分流程</a>
 	</div>
-	<div class="childMenu menu2">
+	<%-- <div class="childMenu menu2">
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="管理监控人员扣分流程">管理监控人员扣分流程</a>
 		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="管理监控人员加分流程">管理监控人员加分流程</a>
-	</div>
+	</div> --%>
 	<div class="childMenu menu3">
-		<a href="http://47.106.37.95:9080/itsm/"><img src="${ctx}/static/images/Service_pro_13.png" alt="文明服务扣分流程">文明服务扣分流程</a>
+		<a href="${itsm}/bpm/showAddWorkOrderBPMExecAction.action?uname=${activeUser.loginName}&sysVer=_S&processID=14&regionId=6&productID=16&workBenchID=createWorkorder_16"><img src="${ctx}/static/images/Service_pro_13.png" alt="文明服务扣分流程">文明服务扣分流程</a>
 	</div>
 	</shiro:hasRole>
 	<!-- <script type="text/html" id="processTeplate">

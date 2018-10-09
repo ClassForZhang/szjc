@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.CivilizedPublishDao">
+	<resultMap type="civilizedpublish" id="civilizedpublish">
+        <result column="id" property="id"/>
+        <result column="date" property="date"/>
+        <result column="station_id" property="stationId"/>
+        <result column="user_name" property="userName"/>
+        <result column="publish_time" property="currentTime"/>
+        <result column="audit_man" property="auditMan"/>
+        <result column="audit_time" property="auditTime"/>
+        <result column="description" property="description"/>
+        <result column="c_ids" property="cIds"/>
+         
+    </resultMap>
+
+	<insert id="save">
+		insert into table_civilized_publish (date,station_id,user_name,publish_time,description,c_ids)
+		values
+		(#{entity.date},#{entity.stationId},#{entity.userName},#{entity.currentTime},#{entity.description},#{entity.cIds})
+	</insert>
+	
+	<select id="getListData" resultMap="civilizedpublish">
+		select * from table_civilized_publish
+	</select>
+	
+	<select id="getTotalListData" resultType="int">
+		select count(1) from table_civilized_publish
+	</select>
+	
+	<select id="getIdByTime" resultType="int"  parameterType="string">
+		select id from  table_civilized_publish where publish_time=#{value}
+	</select>
+	
+	<update id="updateStatus">
+		update table_civilized_publish set status=#{status}
+		where id =#{orderId}
+	</update>
+	
+	<update id="update">
+		update table_civilized_publish set status=#{status},audit_man=#{username},audit_time=#{time}
+		where id =#{orderId}
+	</update>
+</mapper>

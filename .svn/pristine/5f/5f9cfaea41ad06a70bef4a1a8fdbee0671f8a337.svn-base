@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.IOperateSpecialPublishDao">
+	<resultMap type="operatespecialpublish" id="operatespecialpublish">
+        <result column="id" property="id"/>
+        <result column="date" property="date"/>
+        <result column="station" property="station"/>
+        <result column="publish_man" property="publish_man"/>
+        <result column="publish_time" property="publish_time"/>
+        <result column="audit_man" property="audit_man"/>
+        <result column="audit_time" property="audit_time"/>
+        <result column="status" property="status"/>
+        <result column="description" property="description"/>
+        <result column="operate_ids" property="operate_ids"/>
+    </resultMap>
+
+	
+	<insert id="savePublish">
+		insert into operate_special_publish (date,station,publish_man,publish_time,audit_man,audit_time,status,description,operate_ids)
+		values 
+		(#{entity.date},#{entity.station},#{entity.publish_man},#{entity.publish_time},#{entity.audit_man},#{entity.audit_time},#{entity.status},#{entity.description},#{entity.operate_ids})
+	</insert>
+	
+	 <select id="getTotalOperateSpecialPublish" resultType="int">
+		select count(1) from operate_special_publish where 1=1
+		<if test="entity.station!=null and entity.station!=''">
+			and station = #{entity.station}
+		</if>
+		<if test="entity.status==5">
+			and status in (1,2)
+		</if>
+		<if test="entity.status==1">
+			and status =1
+		</if>
+		<if test="entity.status==2">
+			and status =2
+		</if>
+		<if test="entity.status==3">
+			and status =3
+		</if>
+		<if test="entity.status==4">
+			and status in (1,2,3)
+		</if>
+	</select>
+	
+	<select id="getOperateSpecialPublishPage" resultMap="operatespecialpublish">
+		select * from operate_special_publish 
+		where 1=1
+		<if test="entity.station!=null and entity.station!=''">
+			and station = #{entity.station}
+		</if>
+		<if test="entity.status==5">
+			and status in (1,2)
+		</if>
+		<if test="entity.status==1">
+			and status =1
+		</if>
+		<if test="entity.status==2">
+			and status =2
+		</if>
+		<if test="entity.status==3">
+			and status =3
+		</if>
+		<if test="entity.status==4">
+			and status in (1,2,3)
+		</if>
+		GROUP BY id
+	</select>
+	
+	<delete id="deletePublishs">
+		delete from operate_special_publish where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+	</delete>
+	
+	<!-- <update id="updatePublishById" parameterType="string"> 
+		update 
+	</update> -->
+	
+	<update id="updatePublishs"> 
+		update operate_special_publish set status=#{status}
+		where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+	</update>
+	
+	<update id="updatePublishAudit"> 
+		update operate_special_publish set audit_man=#{audit_man},audit_time=#{audit_time}
+		where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+	</update>
+	
+	<select id="getOrderIdByDate" parameterType="string" resultType="string">
+		select id from operate_special_publish where publish_time =#{value}
+	</select>
+</mapper>

@@ -10,7 +10,7 @@
 <meta name="description" content="User login page" />
 <meta name="author" content="Vincent Garreau" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" media="screen" href="${ctx}/static/css/style.css">
+<%-- <link rel="stylesheet" media="screen" href="${ctx}/static/css/style.css"> --%>
 <link rel="Shortcut Icon" href="favicon.ico">
 <link rel="Bookmark" href="favicon.ico" >
 <title></title>
@@ -18,7 +18,7 @@
 <script type="text/javascript" src="${ctx}/static/js/jquery.min.js"></script>
 <link rel="stylesheet" href="${ctx}/static/css/bootstrap.min.css" />
 <!-- text fonts -->
-<link rel="stylesheet" href="${ctx}/static/css/ace-fonts.css" />
+<%-- <link rel="stylesheet" href="${ctx}/static/css/ace-fonts.css" /> --%>
 <link rel="stylesheet" href="${ctx}/static/css/ace.css" />
 <link rel="stylesheet" href="${ctx}/static/css/main.css" />
 
@@ -37,14 +37,14 @@
 						<fieldset>
 							<label class="block clearfix">
 								<span class="block input-icon input-icon-right">
-									<input type="text" id="loginName" name="userName" onkeydown="KeyDown()" class="form-control" placeholder="Username" />
+									<input type="text" id="loginName" name="userName"  class="form-control" placeholder="Username" />
 									<i class="ace-icon fa fa-user"></i>
 								</span>
 							</label>
 							<div class="space-6"></div>
 							<label class="block clearfix">
 								<span class="block input-icon input-icon-right">
-									<input type="password" id="pwd" name="password"  onkeydown="KeyDown()" class="form-control Pasd"  placeholder="Password" />
+									<input type="password" id="pwd" name="password"   class="form-control Pasd"  placeholder="Password" />
 									<i class="ace-icon fa fa-lock"></i>
 								</span>
 							</label>
@@ -75,15 +75,8 @@
 	</div>
 </body>
 <script src="${ctx}/static/js/particles.min.js"></script>
-<script src="${ctx}/static/js/app2.js"></script>
+<%-- <script src="${ctx}/static/js/app2.js"></script> --%>
 <script type="text/javascript">
-	/* function KeyDown(){
-	  if (event.keyCode == 13){
-	    event.returnValue=false;
-	    event.cancel = true;
-	    form1.btnsubmit.click();
-	  }
-	} */
 	function keyLogin(){
 		 if (event.keyCode==13)  //回车键的键值为13
 		   document.getElementById("username").click(); //调用登录按钮的登录事件

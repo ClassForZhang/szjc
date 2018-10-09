@@ -7,5 +7,14 @@
  	<typeAliases>
  		<typeAlias type="com.cn.test.entity.UserEntity" alias="sysuser"/>
  		<typeAlias type="com.cn.test.entity.Role" alias="sysrole"/>
+ 		<typeAlias type="com.cn.test.entity.SpecialOperate" alias="operatespecial"/>
+ 		<typeAlias type="com.cn.test.entity.OperateSpecialPublish" alias="operatespecialpublish"/>
+ 		<typeAlias type="com.cn.test.entity.Bonus" alias="operatebonus"/>
+ 		<typeAlias type="com.cn.test.entity.OperateRealLT" alias="reallt"/>
+ 		<typeAlias type="com.cn.test.entity.StationError" alias="stationerror"/>
+ 		<typeAlias type="com.cn.test.entity.GuaCar" alias="guacar"/>
+ 		<typeAlias type="com.cn.test.entity.CarFlow" alias="carflow"/>
+ 		<typeAlias type="com.cn.test.entity.CivilizedEvaluation" alias="civilized"/>
+ 		<typeAlias type="com.cn.test.entity.CivilizedPublish" alias="civilizedpublish"/>
  	</typeAliases>
  </configuration>   

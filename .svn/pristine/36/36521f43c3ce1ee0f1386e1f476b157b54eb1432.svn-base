@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.OperateRealLTDao">
+	<resultMap type="reallt" id="reallt">
+        <result column="id" property="id"/>
+        <result column="charge_man" property="charge_man"/>
+        <result column="user_name" property="user_name"/>
+        <result column="d_toll" property="d_toll"/>
+        <result column="date" property="date"/>
+        <result column="n_ex_station_id" property="n_ex_station_id"/>
+    </resultMap>
+	
+	
+	<select id="getLTCarNum" resultType="int">
+		select count(1) from operate_reallt
+		where 1=1
+   		<if test="station_id!=null and station_id!=''">
+   		and n_ex_station_id =#{station_id}
+   		</if>
+   		<if test="month!=null and month!=''">
+		and SUBSTR(date from 5 for 2)=#{month}
+		</if>
+	</select>
+	
+	<select id="getltToll" resultType="int">
+		select IFNULL(sum(d_toll),0) from operate_reallt
+		where 1=1
+   		<if test="station_id!=null and station_id!=''">
+   		and n_ex_station_id =#{station_id}
+   		</if>
+   		<if test="month!=null and month!=''">
+		and SUBSTR(date from 5 for 2)=#{month}
+		</if>
+	</select>
+</mapper>

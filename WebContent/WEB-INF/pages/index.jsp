@@ -22,7 +22,7 @@
 		LOGO
 		<p>
 			<a href="javascript:void(0)" title="" class="home">稽查管理</a>
-			<a href="http://127.0.0.1:8080/itsm" title="" class="ITSM" onclick="go()">检测故障</a>
+			<a href="http://192.168.0.100:9080/itsm" title="" class="ITSM" onclick="go()">检测故障</a>
 			<!-- <script type="text/javascript">
 				function go(){
 					window.open("http://127.0.0.1:8080/itsm");
@@ -44,13 +44,13 @@
 							<a href="javascript:void(0)" style="padding-left: 20px;" >营运专项统计</a>
 							<ul class="thirdLayer">
 								<li>
-									<a href="javascript:void(0)" data-value="operateSpecialForm" >营运专项表单</a>
+									<a href="javascript:void(0)" data-value="operateSpecial/operateSpecialForm" >营运专项表单</a>
 								</li>
 								<li>
-									<a href="javascript:void(0)" data-value="operateSpecialPublish">营运专项列表(发起版)</a>
+									<a href="javascript:void(0)" data-value="operateSpecial/operateSpecialPublish">营运专项列表(发起版)</a>
 								</li>
 								<li>
-									<a href="javascript:void(0)" data-value="operateSpecialCheck">营运专项列表(审核版)</a>
+									<a href="javascript:void(0)" data-value="operateSpecial/operateSpecialCheck">营运专项列表(审核版)</a>
 								</li>
 							</ul>
 						</li>
@@ -118,16 +118,20 @@
 								</li>
 							</ul>
 						</li>					
-						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">小改大、挂车奖励表</a></li>
-						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="carProcess/carProcess">车流量绩效统计</a></li>
+						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="guaCar/guaCar">小改大、挂车奖励表</a></li>
+						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="carFlow/carFlow">车流量绩效统计</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="javascript:void(0)">数据类</a>
 					<ul class="secondLayer">
-						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">违规车数据分析</a></li>
+						<!-- <li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">违规车数据分析</a></li>
 						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">绩效考核扣分主项分析</a></li>
-						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">文明服务专项分析图表</a></li>
+						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">文明服务专项分析图表</a></li> -->
+						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="stationError/stationError">收费站差错率</a></li>
+						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">稽查整改单条款统计</a></li>
+						<li><a href="javascript:void(0)" style="padding-left: 20px;" data-value="">绿农车统计</a></li>
+						
 					</ul>
 				</li>
 				

@@ -8,10 +8,6 @@
         <result column="role_name" property="roleName"/>
     </resultMap>
 
-	<!-- 开启本mapper的namespace下的二缓存 -->
-	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
-
-    <!-- 根据用户账号查询用户信息 ForMysql-->
     <select id="findAll" resultMap="sysrole">
 		select * from sys_role 
 	</select>

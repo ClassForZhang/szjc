@@ -10,10 +10,7 @@
         <result column="password" property="password"/>
     </resultMap>
 
-	<!-- 开启本mapper的namespace下的二缓存 -->
-	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
 
-    <!-- 根据用户账号查询用户信息 ForMysql-->
     <select id="findUserByUserName" resultMap="sysuser">
 		select * from sys_user where username = #{username}
 	</select>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.IOperateSpecialDao">
+	<resultMap type="operatespecial" id="operatespecial">
+        <result column="id" property="id"/>
+        <result column="date" property="date"/>
+        <result column="user_name" property="UserName"/>
+        <result column="d_toll" property="d_toll"/>
+        <result column="weiguishuoming" property="WeiGuiSuoMing"/>
+        <result column="n_ex_lane_id" property="n_ex_lane_id"/>
+        <result column="enstation_name" property="EnStationName"/>
+        <result column="c_ex_vehicle_class" property="c_ex_vehicle_class"/>
+        <result column="charge_man" property="chargeMan"/>
+        <result column="station_id" property="station_id"/>
+        <result column="d_weight" property="d_weight"/>
+        <result column="description" property="description"/>
+        <result column="order_id" property="order_id"/>
+    </resultMap>
+
+
+    <select id="getTotalOperateSpecial" resultType="int">
+		select count(1) from operate_special where 1=1 
+		<if test="entity.station_id!=null and entity.station_id!=''">
+			and station_id =#{entity.station_id}
+		</if>
+		<if test="entity.endTime!=null and entity.endTime!=''">
+			and SUBSTR(date FROM 1 FOR 8)&lt;= #{entity.endTime}
+		</if>
+		<if test="entity.startTime!=null and entity.startTime!=''">
+			and SUBSTR(date FROM 1 FOR 8)&gt;= #{entity.startTime}
+		</if>
+		<if test="entity.n_ex_lane_id!=null and entity.n_ex_lane_id!=''">
+			and n_ex_lane_id = #{entity.n_ex_lane_id}
+		</if>
+		<if test="entity.WeiGuiSuoMing!=null and entity.WeiGuiSuoMing!=''">
+			and weiguishuoming = #{entity.WeiGuiSuoMing}
+		</if>
+		<if test="entity.chargeMan!=null and entity.chargeMan!=''">
+			and charge_man = #{entity.chargeMan}
+		</if>
+		<if test="entity.UserName!=null and entity.UserName!=''">
+			and user_name = #{entity.UserName}
+		</if>
+		<if test="entity.order_id!=null and entity.order_id!=''">
+			and order_id = #{entity.order_id}
+		</if> 
+		<if test="entity.order_id==null">
+			and order_id = '0'
+		</if> 
+	</select>
+	
+	<select id="getOperateSpecialPage" resultMap="operatespecial">
+		select * from operate_special 
+		where 1=1
+		<if test="entity.station_id!=null and entity.station_id!=''">
+			and station_id =#{entity.station_id}
+		</if>
+		<if test="entity.endTime!=null and entity.endTime!=''">
+			and SUBSTR(date FROM 1 FOR 8)&lt;= #{entity.endTime}
+		</if>
+		<if test="entity.startTime!=null and entity.startTime!=''">
+			and SUBSTR(date FROM 1 FOR 8)&gt;= #{entity.startTime}
+		</if>
+		<if test="entity.n_ex_lane_id!=null and entity.n_ex_lane_id!=''">
+			and n_ex_lane_id = #{entity.n_ex_lane_id}
+		</if>
+		<if test="entity.WeiGuiSuoMing!=null and entity.WeiGuiSuoMing!=''">
+			and weiguishuoming = #{entity.WeiGuiSuoMing}
+		</if>
+		<if test="entity.chargeMan!=null and entity.chargeMan!=''">
+			and charge_man = #{entity.chargeMan}
+		</if>
+		<if test="entity.UserName!=null and entity.UserName!=''">
+			and user_name = #{entity.UserName}
+		</if>
+		<if test="entity.order_id!=null and entity.order_id!=''">
+			and order_id = #{entity.order_id}
+		</if>
+		<if test="entity.order_id==null">
+			and order_id = '0'
+		</if> 
+		GROUP BY id
+	</select>
+	
+	<insert id="save">
+		insert into operate_special (date,user_name,d_toll,weiguishuoming,n_ex_lane_id,enstation_name,c_ex_vehicle_class,charge_man,station_id)
+		values 
+		(#{entity.date},#{entity.UserName},#{entity.d_toll},#{entity.WeiGuiSuoMing},#{entity.n_ex_lane_id},#{entity.EnStationName},#{entity.c_ex_vehicle_class},#{entity.chargeMan},#{entity.station_id})
+	</insert>
+	
+	<update id="update">
+		update operate_special set 
+		date=#{entity.date},user_name=#{entity.UserName},d_toll=#{entity.d_toll},weiguishuoming=#{entity.WeiGuiSuoMing},n_ex_lane_id=#{entity.n_ex_lane_id}
+		,enstation_name=#{entity.EnStationName},c_ex_vehicle_class=#{entity.c_ex_vehicle_class},charge_man=#{entity.chargeMan},station_id=#{entity.station_id}
+		where id=#{entity.id}
+	</update>
+	
+	<delete id="deleteOne" parameterType="integer">
+		delete from operate_special where id=#{value}
+	</delete>
+	
+	<update id="updateOrderIdByIds">
+		update operate_special set order_id = #{order_id} where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+   	</update>
+   	
+   	<select id="getOneByOrderId" resultMap="operatespecial">
+   		select * from operate_special where order_id=#{value}
+   	</select>
+   	
+   	<select id="getOperateSpecialFormPageForBonus" resultMap="operatespecial">
+   		select * from operate_special where order_id in 
+   		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+   	</select>
+   	
+   	<select id="getTotalCarNum" resultType="int">
+   		select count(1) from operate_special 
+   		where 1=1
+   		<if test="station_id!=null and station_id!=''">
+   		and station_id = #{station_id} 
+   		</if>
+   		<if test="month!=null and month!=''">
+   		and SUBSTR(date from 5 for 2)=#{month}
+   		</if>
+   	</select>
+   	
+   	<select id="getTotalRewardCarNum" resultType="int">
+   		select count(1) from operate_special 
+   		where 1=1
+   		<if test="station_id!=null and station_id!=''">
+   		and station_id = #{station_id}
+   		</if>
+   		<if test="month!=null and month!=''">
+   		 and SUBSTR(date from 5 for 2)=#{month}
+   		</if>
+   		and d_toll !=#{toll}
+   	</select>
+   	
+   	<select id="getTotalToll" resultType="int">
+   		select IFNULL(sum(d_toll),0) from operate_special 
+   		where 1=1
+   		<if test="station_id!=null and station_id!=''">
+   		and station_id = #{station_id}
+   		</if> 
+   		<if test="month!=null and month!=''">
+   		and SUBSTR(date from 5 for 2)=#{month}
+   		</if>
+   	</select>
+   	
+</mapper>

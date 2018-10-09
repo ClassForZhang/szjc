@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.test.dao.CivilizedDao">
+	<resultMap type="civilized" id="civilized">
+        <result column="id" property="id"/>
+        <result column="date" property="date"/>
+        <result column="people_name" property="peopleName"/>
+        <result column="sym_name" property="symName"/>
+        <result column="are_name" property="areName"/>
+        <result column="reduce_score" property="reduceScore"/>
+        <result column="date1" property="date1"/>
+        <result column="date2" property="date2"/>
+        <result column="date3" property="date3"/>
+        <result column="date4" property="date4"/>
+        <result column="date5" property="date5"/>
+        <result column="date6" property="date6"/>
+        <result column="date7" property="date7"/>
+        <result column="date8" property="date8"/>
+        <result column="date9" property="date9"/>
+        <result column="date10" property="date10"/>
+        <result column="date11" property="date11"/>
+        <result column="date12" property="date12"/>
+        <result column="date13" property="date13"/>
+        <result column="date14" property="date14"/>
+        <result column="date15" property="date15"/>
+        <result column="date16" property="date16"/>
+        <result column="date17" property="date17"/>
+        <result column="date18" property="date18"/>
+        <result column="date19" property="date19"/>
+        <result column="date20" property="date20"/>
+        <result column="date21" property="date21"/>
+        <result column="date22" property="date22"/>
+        <result column="date23" property="date23"/>
+        <result column="date24" property="date24"/>
+        <result column="date25" property="date25"/>
+        <result column="date26" property="date26"/>
+        <result column="date27" property="date27"/>
+        <result column="date28" property="date28"/>
+        <result column="date29" property="date29"/>
+        <result column="date30" property="date30"/>
+        <result column="date31" property="date31"/> 
+        <result column="order_id" property="orderId"/>    
+    </resultMap>
+
+	<select id="getFormData" resultMap="civilized">
+		select * from table_civilized_evaluation
+		where 1=1 
+		<if test="entity.startTime!=null and entity.startTime!=''">
+			and date &gt;=#{entity.startTime}
+		</if>
+		<if test="entity.endTime!=null and entity.endTime!=''">
+			and date &lt;=#{entity.endTime}
+		</if>
+		<if test="entity.orderId!=null and entity.orderId!=''">
+			and order_id =#{entity.orderId}
+		</if>
+		<if test="entity.orderId==''">
+			and order_id =0
+		</if>
+	</select>
+	
+	<select id="getTotalData" resultType="int">
+		select count(1) from table_civilized_evaluation
+	</select>
+	
+	<select id="getDataByPeopleName" resultMap="civilized">
+		select * from table_civilized_evaluation where people_name=#{peopleName}
+		<if test="startTime!=null and startTime!=''">
+			and date &gt;=#{startTime}
+		</if>
+		<if test="endTime!=null and endTime!=''">
+			and date &lt;=#{endTime}
+		</if>
+	</select>
+	
+	<select id="getFormDataByTime" resultMap="civilized">
+		select * from table_civilized_evaluation where 1=1
+		<if test="startTime!=null and startTime!=''">
+			and date &gt;=#{startTime}
+		</if>
+		<if test="endTime!=null and endTime!=''">
+			and date &lt;=#{endTime}
+		</if>
+		
+	</select>
+	
+	<update id="update">
+		update table_civilized_evaluation set order_id=#{orderId}
+		where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+	</update>
+	
+	<update id="updateByIds">
+		update table_civilized_evaluation set status=#{status}
+		where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+   			#{id}
+   		</foreach>
+	</update>
+	
+	<update id="updateAllById">
+		update table_civilized_evaluation set people_name=#{entity.peopleName},sym_name=#{entity.symName},date1=#{entity.date1},date2=#{entity.date2},date3=#{entity.date3},date4=#{entity.date4},date5=#{entity.date5},date6=#{entity.date6},date7=#{entity.date7},date8=#{entity.date8},date9=#{entity.date9},date10=#{entity.date10},date11=#{entity.date11},date12=#{entity.date12},date13=#{entity.date13},date14=#{entity.date14},date15=#{entity.date15},date16=#{entity.date16},date17=#{entity.date17},date18=#{entity.date18},date19=#{entity.date19},date20=#{entity.date20},date21=#{entity.date21},date22=#{entity.date22},date23=#{entity.date23},date24=#{entity.date24},date25=#{entity.date25},date26=#{entity.date26},date27=#{entity.date27},date28=#{entity.date28},date29=#{entity.date29},date30=#{entity.date30},date31=#{entity.date31}
+		where 
+		id = #{entity.id}
+	</update>
+</mapper>
